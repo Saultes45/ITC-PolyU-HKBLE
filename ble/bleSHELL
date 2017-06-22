@@ -1,0 +1,55 @@
+#!/bin/bash
+# rsync script
+
+## Prepare the bluetooth
+sudo service bluetooth restart
+hciconfig
+sudo hciconfig hci0 up
+hciconfig
+sudo hcitool lescan
+echo "Turn the device on"
+
+## GATT
+#(echo -e "connect\n" && cat) | sudo gatttool -I -i hci0 -t random -b E6:CD:67:5B:53:55 --sec-level=high >> output3.txt &
+(echo -e "connect\n" && cat) | sudo gatttool -I -i hci0 -t random -b E6:CD:67:5B:53:55 --sec-level=high | sudo python /home/pi/Desktop/BLEInterpret.py &
+##sleep 5s
+##xdotool type 'primary'
+##xdotool key KP_Enter
+
+sleep 5s
+xdotool type 'char-write-cmd 0x000c 0100 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x000f 0100 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x0012 0100 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x0015 0100 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x0018 0100 -listen'
+xdotool key KP_Enter
+
+sleep 10s
+xdotool type 'char-write-cmd 0x000c 0000 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x000f 0000 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x0012 0000 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x0015 0000 -listen'
+xdotool key KP_Enter
+xdotool type 'char-write-cmd 0x0018 0000 -listen'
+xdotool key KP_Enter
+
+sleep 5s
+xdotool type 'exit'
+xdotool key KP_Enter
+
+sleep 1s
+xdotool type 'exit'
+xdotool key KP_Enter
+
+## Wait for user input
+read smthng
+
+sudo hciconfig hci0 down
+hciconfig

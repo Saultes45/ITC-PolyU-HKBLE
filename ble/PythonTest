@@ -1,0 +1,6 @@
+#!/bin/bash
+
+var='[KNotification handle = 0x0011 value: 00 01 8d 51 '
+echo $var | sudo python /home/pi/Desktop/BLEInterpret.py
+
+read

@@ -1,0 +1,10 @@
+[E6:CD:67:5B:53:55][LE]> connect
+Attempting to connect to E6:CD:67:5B:53:55
+[E6:CD:67:5B:53:55][LE]> [K[E6:CD:67:5B:53:55][LE]> [KConnection successful
+[0;94m[E6:CD:67:5B:53:55][0m[LE]> char-write-cmd 0x0012 0100 -listen
+[0;94m[E6:CD:67:5B:53:55][0m[LE]> [KNotification handle = 0x0011 value: 00 01 8d 51 
+[0;94m[E6:CD:67:5B:53:55][0m[LE]> [KNotification handle = 0x0011 value: 00 01 8d 4f 
+[0;94m[E6:CD:67:5B:53:55][0m[LE]> [KNotification handle = 0x0011 value: 00 01 8d 49 
+[0;94m[E6:CD:67:5B:53:55][0m[LE]> [KNotification handle = 0x0011 value: 00 01 8d 43 
+[0;94m[E6:CD:67:5B:53:55][0m[LE]> char-write-cmd 0x0012 0000 -listen
+[0;94m[E6:CD:67:5B:53:55][0m[LE]> exit

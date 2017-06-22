@@ -1,0 +1,45 @@
+Discover
+https://wiki.archlinux.org/index.php/Bluetooth#Bluetoothctl
+E6:CD:67:5B:53:55
+
+# bluetoothctl 
+[NEW] Controller 00:10:20:30:40:50 pi [default]
+[bluetooth]# agent KeyboardOnly 
+Agent registered
+[bluetooth]# default-agent 
+Default agent request successful
+[bluetooth]# scan on
+Discovery started
+[CHG] Controller 00:10:20:30:40:50 Discovering: yes
+[NEW] Device 00:12:34:56:78:90 myLino
+[CHG] Device 00:12:34:56:78:90 LegacyPairing: yes
+[bluetooth]# pair 00:12:34:56:78:90
+Attempting to pair with 00:12:34:56:78:90
+[CHG] Device 00:12:34:56:78:90 Connected: yes
+[CHG] Device 00:12:34:56:78:90 Connected: no
+[CHG] Device 00:12:34:56:78:90 Connected: yes
+Request PIN code
+[agent] Enter PIN code: 1234
+[CHG] Device 00:12:34:56:78:90 Paired: yes
+Pairing successful
+[CHG] Device 00:12:34:56:78:90 Connected: no
+[bluetooth]# connect 00:12:34:56:78:90
+Attempting to connect to 00:12:34:56:78:90
+[CHG] Device 00:12:34:56:78:90 Connected: yes
+Connection successful
+
+Gatt tool  
+https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/control-with-bluez
+sudo hcitool lescan
+
+sudo gatttool -I
+primary
+connect trust pair
+
+pexpect
+
+gatttool
+auto send data
+https://www.jaredwolff.com/blog/get-started-with-bluetooth-low-energy/
+char-write-req <handle> <data>
+har-write-req 0x000f 0100

@@ -1,0 +1,114 @@
+handle: 0x0001, uuid: 2800
+handle: 0x0002, uuid: 2803
+handle: 0x0003, uuid: 2a00
+handle: 0x0004, uuid: 2803
+handle: 0x0005, uuid: 2a01
+handle: 0x0006, uuid: 2803
+handle: 0x0007, uuid: 2a04
+handle: 0x0008, uuid: 2800
+handle: 0x0009, uuid: 2800
+handle: 0x000a, uuid: 2803
+handle: 0x000b, uuid: 6e400002-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x000c, uuid: 2902
+handle: 0x000d, uuid: 2803
+handle: 0x000e, uuid: 6e400003-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x000f, uuid: 2902
+handle: 0x0010, uuid: 2803
+handle: 0x0011, uuid: 6e400004-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x0012, uuid: 2902
+handle: 0x0013, uuid: 2803
+handle: 0x0014, uuid: 6e400005-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x0015, uuid: 2902
+handle: 0x0016, uuid: 2803
+handle: 0x0017, uuid: 6e400006-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x0018, uuid: 2902
+
+
+char-write-req 0x0015 0100 -listen
+
+gatttool -b E6:CD:67:5B:53:55 -t random -I --sec-level=high
+[E6:CD:67:5B:53:55][LE]> connect
+Attempting to connect to E6:CD:67:5B:53:55
+Connection successful
+[E6:CD:67:5B:53:55][LE]> primary
+attr handle: 0x0001, end grp handle: 0x0007 uuid: 00001800-0000-1000-8000-00805f9b34fb
+attr handle: 0x0008, end grp handle: 0x0008 uuid: 00001801-0000-1000-8000-00805f9b34fb
+attr handle: 0x0009, end grp handle: 0xffff uuid: 6e400001-b5a3-f393-e0a9-e50e24dcca9e
+[E6:CD:67:5B:53:55][LE]> char-desc
+handle: 0x0001, uuid: 2800
+handle: 0x0002, uuid: 2803
+handle: 0x0003, uuid: 2a00
+handle: 0x0004, uuid: 2803
+handle: 0x0005, uuid: 2a01
+handle: 0x0006, uuid: 2803
+handle: 0x0007, uuid: 2a04
+handle: 0x0008, uuid: 2800
+handle: 0x0009, uuid: 2800
+handle: 0x000a, uuid: 2803
+handle: 0x000b, uuid: 6e400002-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x000c, uuid: 2902
+handle: 0x000d, uuid: 2803
+handle: 0x000e, uuid: 6e400003-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x000f, uuid: 2902
+handle: 0x0010, uuid: 2803
+handle: 0x0011, uuid: 6e400004-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x0012, uuid: 2902
+handle: 0x0013, uuid: 2803
+handle: 0x0014, uuid: 6e400005-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x0015, uuid: 2902
+handle: 0x0016, uuid: 2803
+handle: 0x0017, uuid: 6e400006-b5a3-f393-e0a9-e50e24dcca9e
+handle: 0x0018, uuid: 2902
+Discover descriptors finished: No attribute found within the given range
+[E6:CD:67:5B:53:55][LE]> char-read-hnd 0x000b
+Discover
+https://wiki.archlinux.org/index.php/Bluetooth#Bluetoothctl
+E6:CD:67:5B:53:55
+
+---------------------------------------------
+char-write-cmd <hnd-1> 0100 -listen
+--------------------------------------------------
+
+
+
+# bluetoothctl 
+[NEW] Controller 00:10:20:30:40:50 pi [default]
+[bluetooth]# agent KeyboardOnly 
+Agent registered
+[bluetooth]# default-agent 
+Default agent request successful
+[bluetooth]# scan on
+Discovery started
+[CHG] Controller 00:10:20:30:40:50 Discovering: yes
+[NEW] Device 00:12:34:56:78:90 myLino
+[CHG] Device 00:12:34:56:78:90 LegacyPairing: yes
+[bluetooth]# pair 00:12:34:56:78:90
+Attempting to pair with 00:12:34:56:78:90
+[CHG] Device 00:12:34:56:78:90 Connected: yes
+[CHG] Device 00:12:34:56:78:90 Connected: no
+[CHG] Device 00:12:34:56:78:90 Connected: yes
+Request PIN code
+[agent] Enter PIN code: 1234
+[CHG] Device 00:12:34:56:78:90 Paired: yes
+Pairing successful
+[CHG] Device 00:12:34:56:78:90 Connected: no
+[bluetooth]# connect 00:12:34:56:78:90
+Attempting to connect to 00:12:34:56:78:90
+[CHG] Device 00:12:34:56:78:90 Connected: yes
+Connection successful
+
+Gatt tool  
+https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/control-with-bluez
+sudo hcitool lescan
+
+sudo gatttool -I
+primary
+connect trust pair
+
+pexpect
+
+gatttool
+auto send data
+https://www.jaredwolff.com/blog/get-started-with-bluetooth-low-energy/
+char-write-req <handle> <data>
+har-write-req 0x000f 0100
